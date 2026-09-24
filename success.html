@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Download ready â€” Quillmark</title>
+<style>
+:root{--bg:#0d0f12;--card:#1a1e25;--line:#262b33;--text:#e8eaed;--muted:#9aa3ad;--accent:#e2c07a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif}
+a{color:#7ab8e2;text-decoration:none}a:hover{text-decoration:underline}
+.wrap{max-width:720px;margin:0 auto;padding:64px 24px}
+.check{width:64px;height:64px;border-radius:50%;background:rgba(110,194,122,.15);border:1px solid #2c4a31;display:flex;align-items:center;justify-content:center;font-size:30px;color:#6ec27a;margin:0 auto 24px}
+h1{font-size:32px;text-align:center;font-weight:800;letter-spacing:-.3px;margin-bottom:8px}
+.sub{text-align:center;color:var(--muted);margin-bottom:40px}
+.dl{display:block;text-align:center;background:var(--accent);color:#10131a;font-weight:700;font-size:17px;padding:16px 28px;border-radius:12px;margin:0 auto 14px;max-width:420px;cursor:pointer;border:none}
+.dl:hover{box-shadow:0 6px 28px rgba(226,192,122,.3)}
+.center{text-align:center;color:var(--muted);font-size:13.5px;margin-bottom:48px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px;margin-bottom:18px}
+.card h2{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.num{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#10131a;font-weight:700;font-size:13.5px;display:inline-flex;align-items:center;justify-content:center}
+.card ol{margin-left:20px;color:var(--muted);font-size:14.5px;display:grid;gap:8px}
+.card code{background:#0a0c0f;border:1px solid var(--line);border-radius:6px;padding:2px 7px;font:13px ui-monospace,Consolas,monospace;color:#cdd6e0}
+.foot{text-align:center;color:var(--muted);font-size:13px;margin-top:36px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="check">âœ“</div>
+  <h1>Thank you â€” your license is ready</h1>
+  <p class="sub">The Quillmark bundle is attached to this page and sent to your email.</p>
+
+  <button class="dl" onclick="alert('Deliverable: quillmark-cli-v1.1.0.zip â€” served from the Gumroad purchase page after checkout.')">â¬‡ Download quillmark-cli-v1.1.0.zip</button>
+  <p class="center">Didn't get the email? Check spam, or reply to the receipt â€” support answers within 24h.</p>
+
+  <div class="card">
+    <h2><span class="num">1</span>Unzip the bundle</h2>
+    <ol>
+      <li>Extract <code>quillmark-cli-v1.1.0.zip</code> anywhere you like.</li>
+      <li>You'll find <code>quillmark.js</code>, <code>README.md</code>, <code>demo.md</code>, and <code>verify.js</code>.</li>
+      <li>No installation. No npm. Just a file.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">2</span>Publish your first site (60 seconds)</h2>
+    <ol>
+      <li>Open a terminal in the unzipped folder.</li>
+      <li>Run: <code>node quillmark.js demo.md -o my-site.html --title "My Site"</code></li>
+      <li>Open <code>my-site.html</code> in your browser â€” dark mode included.</li>
+      <li>Deploy: drop the file on GitHub Pages, Netlify, or any static host.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="num">3</span>Explore the premium guide</h2>
+    <ol>
+      <li>Read <code>README.md</code> for the full command reference.</li>
+      <li>Run <code>node quillmark.js --help</code> anytime to see all options.</li>
+      <li>Your license includes lifetime updates â€” watch your email for new template drops.</li>
+    </ol>
+  </div>
+
+  <p class="foot">Questions? <a href="https://github.com/contentclipsstudios-svg/Quillmark">GitHub</a> Â· <a href="https://contentclips.gumroad.com/l/quillmark">Store page</a> Â· 30-day money-back guarantee</p>
+</div>
+</body>
+</html>
