@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quillmark â€” Publish a professional site from Markdown in one command</title>
+<meta name="description" content="Quillmark turns your Markdown into a fast, polished, self-contained website â€” one command, zero config, nothing to maintain. Look expensive by default.">
+<style>
+:root{
+  --bg:#0d0f12; --bg2:#14171c; --card:#1a1e25; --line:#262b33;
+  --text:#e8eaed; --muted:#9aa3ad; --accent:#e2c07a; --accent2:#7ab8e2;
+  --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font:16px/1.65 ui-sans-serif,system-ui,-apple-system,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent2);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;background:rgba(13,15,18,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-weight:700;font-size:18px;letter-spacing:.2px;color:var(--text)}
+.brand span{color:var(--accent)}
+.navlinks{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+.navlinks a{color:var(--muted)}
+.navlinks a:hover{color:var(--text);text-decoration:none}
+.btn{display:inline-block;background:var(--accent);color:#10131a;font-weight:600;padding:12px 24px;border-radius:10px;border:none;cursor:pointer;font-size:15px;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(226,192,122,.25);text-decoration:none}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.hero{padding:96px 0 64px;text-align:center}
+.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.1;font-weight:800;letter-spacing:-.5px;max-width:820px;margin:0 auto 20px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.sub{color:var(--muted);font-size:clamp(16px,2.2vw,19px);max-width:640px;margin:0 auto 36px}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.hero .note{color:var(--muted);font-size:13px}
+.badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.badge{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:12.5px;color:var(--muted)}
+.badge b{color:var(--text);font-weight:600}
+.terminal{background:#0a0c0f;border:1px solid var(--line);border-radius:12px;max-width:640px;margin:44px auto 0;text-align:left;overflow:hidden}
+.terminal-bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line)}
+.dot{width:10px;height:10px;border-radius:50%;background:#2e343d}
+.dot.r{background:#ff5f57}.dot.y{background:#febc2e}.dot.g{background:#28c840}
+.terminal-body{padding:16px 18px;font:13.5px/1.7 ui-monospace,'Cascadia Code',Consolas,monospace;color:#cdd6e0}
+.terminal-bar + .terminal-body{padding:16px 18px}
+.term{padding:16px 18px;font:13.5px/1.7 ui-monospace,'Cascadia Code',Consolas,monospace;color:#cdd6e0}
+.term .p{color:#6ec27a}.term .c{color:#5b6570}
+.shot{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#0a0c0f;box-shadow:0 24px 60px -24px rgba(0,0,0,.8);max-width:920px;margin:0 auto}
+.shot-head{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);font:12px/1 ui-monospace,'Cascadia Code',Consolas,monospace;color:var(--muted)}
+.shot-body{padding:18px 20px;font:13px/1.85 ui-monospace,'Cascadia Code',Consolas,monospace;color:#cdd6e0;white-space:pre-wrap}
+.shot-body .k{color:var(--accent2)}.shot-body .ok{color:#6ec27a}.shot-body .c{color:#5b6570}
+@media(max-width:760px){.shot{grid-template-columns:1fr}}
+section{padding:80px 0;border-top:1px solid var(--line)}
+.kicker{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+h2{font-size:clamp(26px,3.6vw,36px);font-weight:750;letter-spacing:-.3px;margin-bottom:14px}
+.lead{color:var(--muted);max-width:660px;margin-bottom:44px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px}
+.card h3{font-size:17px;margin-bottom:10px;font-weight:700}
+.card p{color:var(--muted);font-size:14.5px}
+.card .ico{font-size:22px;margin-bottom:14px;display:block}
+.steps{counter-reset:s;display:grid;gap:18px;max-width:680px}
+.step{display:flex;gap:18px;align-items:flex-start}
+.step::before{counter-increment:s;content:counter(s);flex:0 0 34px;height:34px;border-radius:50%;background:var(--accent);color:#10131a;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
+.step div h3{font-size:16px;margin-bottom:4px}
+.step div p{color:var(--muted);font-size:14.5px}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:760px;margin:0 auto}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-align:center}
+.plan.featured{border-color:var(--accent);box-shadow:0 0 40px rgba(226,192,122,.12)}
+.plan .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
+.plan .price{font-size:44px;font-weight:800;margin:12px 0 2px}
+.plan .per{color:var(--muted);font-size:13px;margin-bottom:22px}
+.plan ul{list-style:none;text-align:left;margin:0 0 26px;color:var(--muted);font-size:14.5px}
+.plan li{padding:7px 0;border-bottom:1px dashed var(--line)}
+.plan li::before{content:"âœ“ ";color:var(--accent)}
+.faq{max-width:720px;margin:0 auto}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 22px;margin-bottom:12px}
+.faq summary{cursor:pointer;font-weight:600;font-size:15px}
+.faq p{color:var(--muted);font-size:14.5px;margin-top:10px}
+footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-size:13.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.final{background:linear-gradient(135deg,#141313 0%,#0d0f12 60%);text-align:center;padding:96px 0}
+.final h2{margin-bottom:14px}
+.final p{color:var(--muted);margin-bottom:30px}
+.guar{font-size:13px;color:var(--muted);margin-top:14px}
+@media(max-width:640px){.navlinks{display:none}.hero{padding:64px 0 40px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand">Quill<span>mark</span></div>
+    <nav class="navlinks">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://github.com/contentclipsstudios-svg/Quillmark">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" style="border:none">
+    <div class="wrap">
+      <h1>Publish a professional site from Markdown in <em>one command</em></h1>
+      <p class="sub">No config files. No build pipeline. No node_modules. One command in, a production-ready site out â€” host it anywhere, keep it forever.</p>
+      <div class="cta">
+        <a class="btn" href="#pricing">Get Quillmark â€” $29</a>
+        <a class="btn ghost" href="https://github.com/contentclipsstudios-svg/Quillmark">View on GitHub</a>
+      </div>
+      <p class="note">30-day money-back guarantee Â· One-time payment Â· Lifetime updates</p>
+      <div class="badges">
+        <span class="badge"><b>0</b> dependencies</span>
+        <span class="badge"><b>1</b> file CLI</span>
+        <span class="badge">Node.js <b>18+</b></span>
+        <span class="badge"><b>MIT</b>-licensed core</span>
+        <span class="badge">ðŸ” <b>Secure checkout</b> Â· Gumroad</span>
+        <span class="badge">âŒ¨ï¸ <b>One-command</b> install</span>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+        <div class="term"><span class="p">$</span> node quillmark.js my-notes.md -o index.html --title "My Site"<br><span class="c">OK -> index.html (2.1 kB) â€” ready to deploy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section id="demo">
+    <div class="wrap">
+      <p class="kicker">See it in action</p>
+      <h2>Markdown in. A finished site out.</h2>
+      <p class="lead">Everything happens in your terminal, in under a second. Nothing else touches your disk.</p>
+      <div class="shot">
+        <div>
+          <div class="shot-head"><span class="dot y"></span> notes.md â€” what you write</div>
+          <div class="shot-body">---
+<span class="k">title:</span> My Landing Page
+---
+
+<span class="k">## Launch day</span>
+Today we ship the site.
+*No framework. No build hell.*
+
+- Plain text, full control
+- Version it with git</div>
+        </div>
+        <div>
+          <div class="shot-head"><span class="dot g"></span> index.html â€” what you get</div>
+          <div class="shot-body"><span class="c">~/my-site</span> $ node quillmark.js notes.md -o index.html
+<span class="ok">OK</span> -&gt; index.html (2.1 kB) â€” ready to deploy
+
+<span class="c">$ ls</span>
+notes.md   index.html   <span class="c">â† that's it</span>
+
+Deploy anywhere:
+GitHub Pages Â· Netlify Â· a USB stick</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <div class="wrap">
+      <p class="kicker">Why Quillmark</p>
+      <h2>Everything you need. Nothing you don't.</h2>
+      <p class="lead">Static site generators grew into frameworks. Quillmark went the other way â€” one file, zero dependencies, professional output.</p>
+      <div class="grid">
+        <div class="card"><span class="ico">âš¡</span><h3>Ship in minutes, not weekends</h3><p>One command in, a production-ready site out. No plugins to research, no build pipeline archaeology.</p></div>
+        <div class="card"><span class="ico">ðŸŽ¨</span><h3>Look expensive by default</h3><p>Premium typography, automatic dark mode, and responsive layout are built in â€” your site looks designer-made with zero effort.</p></div>
+        <div class="card"><span class="ico">ðŸ”’</span><h3>Own your content, forever</h3><p>Plain Markdown in, clean standalone HTML out. Host it anywhere â€” GitHub Pages, Netlify, a USB stick. No lock-in, ever.</p></div>
+        <div class="card"><span class="ico">ðŸ§ª</span><h3>Tested like production code</h3><p>Every feature is covered by an automated check suite. v1.1.0 fixed four edge-case defects found by adversarial testing.</p></div>
+        <div class="card"><span class="ico">ðŸª¶</span><h3>Zero dependencies</h3><p>One self-contained file. No node_modules bloat, no supply-chain surface, no surprise breaking updates.</p></div>
+        <div class="card"><span class="ico">â™¾ï¸</span><h3>MIT license, free CLI</h3><p>The engine is free forever. The premium collection adds designer templates and a publishing workflow guide.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW -->
+  <section id="how">
+    <div class="wrap">
+      <p class="kicker">How it works</p>
+      <h2>From notes to live site in three steps</h2>
+      <p class="lead">The whole journey â€” before and after download â€” is designed to stay out of your way.</p>
+      <div class="steps">
+        <div class="step"><div><h3>Get the license</h3><p>One-time $29 payment on Gumroad. You receive the Quillmark bundle â€” CLI, premium usage guide, and lifetime updates â€” instantly by email.</p></div></div>
+        <div class="step"><div><h3>Write Markdown</h3><p>Use the editor you already have. Front-matter sets your title; everything else just works â€” lists, code, links, images.</p></div></div>
+        <div class="step"><div><h3>Run one command</h3><p><code>node quillmark.js site.md</code> â†’ a polished standalone HTML file appears next to your source. Deploy it anywhere, or open it directly.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="wrap">
+      <p class="kicker">Pricing</p>
+      <h2>One payment. No subscription.</h2>
+      <p class="lead" style="margin-bottom:30px">The CLI itself is free and open source. You pay once for the premium experience â€” and never again.</p>
+      <div class="pricing">
+        <div class="plan">
+          <div class="tag">Free</div>
+          <div class="price">$0</div>
+          <div class="per">forever</div>
+          <ul>
+            <li>Full quillmark.js CLI</li>
+            <li>All core Markdown features</li>
+            <li>Dark mode & responsive layout</li>
+            <li>MIT license</li>
+          </ul>
+          <a class="btn ghost" href="https://github.com/contentclipsstudios-svg/Quillmark">Download on GitHub</a>
+        </div>
+        <div class="plan featured">
+          <div class="tag">Premium</div>
+          <div class="price">$29</div>
+          <div class="per">one-time Â· lifetime updates</div>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Premium template collection</li>
+            <li>Publishing workflow guide</li>
+            <li>Priority email support</li>
+            <li>30-day money-back guarantee</li>
+          </ul>
+          <a class="btn" href="https://contentclips.gumroad.com/l/quillmark">Get the Premium license</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">FAQ</p>
+      <h2>Questions, answered</h2>
+      <div class="faq">
+        <details><summary>Is this a subscription?</summary><p>No. One payment of $29, lifetime updates included. The free CLI on GitHub remains free forever under MIT.</p></details>
+        <details><summary>What do I receive after purchase?</summary><p>Instantly: a zip containing the Quillmark CLI, the premium usage guide, and the premium template collection. Plus a receipt by email.</p></details>
+        <details><summary>Do I need Node.js?</summary><p>Any Node.js version 18 or newer. No other tooling, no npm install, no build step.</p></details>
+        <details><summary>Can I get a refund?</summary><p>Yes â€” within 30 days, no questions asked. Email support and the license is refunded.</p></details>
+        <details><summary>What's the difference with Jekyll or Astro?</summary><p>Those are full frameworks with config files, plugins, and dependency trees. Quillmark is one file and one command â€” built for people who just want to publish.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final">
+    <div class="wrap">
+      <h2>Your content deserves better than a template dump.</h2>
+      <p>Look expensive by default â€” starting with one command.</p>
+      <a class="btn" href="https://contentclips.gumroad.com/l/quillmark">Get Quillmark Premium â€” $29</a>
+      <p class="guar">30-day money-back guarantee Â· Instant delivery</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
+    <span>Â© 2026 Quillmark Â· Built with Quillmark</span>
+    <span><a href="https://github.com/contentclipsstudios-svg/Quillmark">GitHub</a> Â· <a href="https://contentclips.gumroad.com/l/quillmark">Gumroad</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
