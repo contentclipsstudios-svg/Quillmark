@@ -62,7 +62,7 @@ h2{font-size:clamp(26px,3.6vw,36px);font-weight:750;letter-spacing:-.3px;margin-
 .step::before{counter-increment:s;content:counter(s);flex:0 0 34px;height:34px;border-radius:50%;background:var(--accent);color:#10131a;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:15px}
 .step div h3{font-size:16px;margin-bottom:4px}
 .step div p{color:var(--muted);font-size:14.5px}
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:760px;margin:0 auto}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:960px;margin:0 auto}
 .plan{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:32px;text-align:center}
 .plan.featured{border-color:var(--accent);box-shadow:0 0 40px rgba(226,192,122,.12)}
 .plan .tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);font-weight:700}
@@ -104,7 +104,7 @@ footer{border-top:1px solid var(--line);padding:36px 0;color:var(--muted);font-s
       <h1>Publish a professional site from Markdown in <em>one command</em></h1>
       <p class="sub">No config files. No build pipeline. No node_modules. One command in, a production-ready site out — host it anywhere, keep it forever.</p>
       <div class="cta">
-        <a class="btn" href="#pricing">Get set up — from $79</a>
+        <a class="btn" href="https://contentclips.gumroad.com/l/quillmark">Get the CLI — $29</a>
         <a class="btn ghost" href="https://github.com/contentclipsstudios-svg/Quillmark">View on GitHub</a>
       </div>
       <p class="note">30-day money-back guarantee · One-time payment</p>
@@ -182,7 +182,7 @@ GitHub Pages · Netlify · a USB stick</div>
       <h2>From notes to live site in three steps</h2>
       <p class="lead">The whole journey — before and after download — is designed to stay out of your way.</p>
       <div class="steps">
-        <div class="step"><div><h3>Get set up</h3><p>One-time $79 payment on Gumroad. I set up Quillmark on your repo, generate your docs, and deploy them live on GitHub Pages — delivered within 24h.</p></div></div>
+        <div class="step"><div><h3>Get the CLI</h3><p>One-time $29 on Gumroad — instant download: the CLI, the publishing guide, and the premium template collection. Lifetime updates included.</p></div></div>
         <div class="step"><div><h3>Write Markdown</h3><p>Use the editor you already have. Front-matter sets your title; everything else just works — lists, code, links, images.</p></div></div>
         <div class="step"><div><h3>Run one command</h3><p><code>node quillmark.js site.md</code> → a polished standalone HTML file appears next to your source. Deploy it anywhere, or open it directly.</p></div></div>
       </div>
@@ -194,7 +194,7 @@ GitHub Pages · Netlify · a USB stick</div>
     <div class="wrap">
       <p class="kicker">Pricing</p>
       <h2>One payment. No subscription.</h2>
-      <p class="lead" style="margin-bottom:30px">The CLI itself is free and open source. You pay once for the premium experience — and never again.</p>
+      <p class="lead" style="margin-bottom:30px">The CLI engine is free and open source. Upgrade once — or have us do everything for you.</p>
       <div class="pricing">
         <div class="plan">
           <div class="tag">Free</div>
@@ -209,7 +209,20 @@ GitHub Pages · Netlify · a USB stick</div>
           <a class="btn ghost" href="https://github.com/contentclipsstudios-svg/Quillmark">Download on GitHub</a>
         </div>
         <div class="plan featured">
-          <div class="tag">Premium</div>
+          <div class="tag">Pro</div>
+          <div class="price">$29</div>
+          <div class="per">one-time · instant download</div>
+          <ul>
+            <li>Full quillmark.js CLI</li>
+            <li>Premium template collection</li>
+            <li>Publishing workflow guide</li>
+            <li>Lifetime updates — every future version</li>
+            <li>30-day money-back guarantee</li>
+          </ul>
+          <a class="btn" href="https://contentclips.gumroad.com/l/quillmark">Buy the CLI — $29</a>
+        </div>
+        <div class="plan">
+          <div class="tag">Done-for-you</div>
           <div class="price">$79</div>
           <div class="per">one-time · delivered within 24h</div>
           <ul>
@@ -231,9 +244,9 @@ GitHub Pages · Netlify · a USB stick</div>
       <p class="kicker">FAQ</p>
       <h2>Questions, answered</h2>
       <div class="faq">
-        <details><summary>Is this a subscription?</summary><p>No. One payment of $79 for the done-for-you setup, delivered within 24h. The free CLI on GitHub remains free forever under MIT.</p></details>
-        <details><summary>What do I receive after purchase?</summary><p>Within 24h: your docs site built from your repo, deployed live on GitHub Pages, plus a short walkthrough so you can update it solo. And a receipt by email.</p></details>
-        <details><summary>Prefer the DIY route?</summary><p>Yes — the premium license at $29 gets you the CLI, the usage guide, and the premium template collection to do it yourself.</p></details>
+        <details><summary>Is this a subscription?</summary><p>No. The PRO CLI license is $29 once. The done-for-you setup is $79 once. Nothing ever recurs.</p></details>
+        <details><summary>What do I receive after purchase?</summary><p>PRO ($29): instant download — the CLI, the guide, and the premium templates. Setup ($79): within 24h, your docs site built from your repo, deployed live on GitHub Pages, plus a walkthrough. A receipt by email either way.</p></details>
+        <details><summary>Prefer the DIY route?</summary><p>Yes — the free CLI covers the core. PRO at $29 adds the premium template collection, the publishing guide, and lifetime updates.</p></details>
         <details><summary>Do I need Node.js?</summary><p>Any Node.js version 18 or newer. No other tooling, no npm install, no build step.</p></details>
         <details><summary>Can I get a refund?</summary><p>Yes — within 30 days, no questions asked. Email support and the license is refunded.</p></details>
         <details><summary>What's the difference with Jekyll or Astro?</summary><p>Those are full frameworks with config files, plugins, and dependency trees. Quillmark is one file and one command — built for people who just want to publish.</p></details>
@@ -246,8 +259,8 @@ GitHub Pages · Netlify · a USB stick</div>
     <div class="wrap">
       <h2>Your content deserves better than a template dump.</h2>
       <p>Look expensive by default — starting with one command.</p>
-      <a class="btn" href="https://contentclips.gumroad.com/l/setup-doc-site">Get your docs site — $79</a>
-      <p class="guar">30-day money-back guarantee · Instant delivery</p>
+      <a class="btn" href="https://contentclips.gumroad.com/l/quillmark">Get the CLI — $29</a>
+      <p class="guar">30-day money-back guarantee · Instant delivery · Prefer done-for-you? <a href="https://contentclips.gumroad.com/l/setup-doc-site">$79 setup, delivered in 24h</a></p>
     </div>
   </section>
 </main>
@@ -255,7 +268,7 @@ GitHub Pages · Netlify · a USB stick</div>
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px">
     <span>© 2026 Quillmark · Built with Quillmark</span>
-    <span><a href="https://github.com/contentclipsstudios-svg/Quillmark">GitHub</a> · <a href="https://contentclips.gumroad.com/l/setup-doc-site">Gumroad</a></span>
+    <span><a href="https://github.com/contentclipsstudios-svg/Quillmark">GitHub</a> · <a href="https://contentclips.gumroad.com/l/quillmark">CLI $29</a> · <a href="https://contentclips.gumroad.com/l/setup-doc-site">Setup $79</a></span>
   </div>
 </footer>
 
